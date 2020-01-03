@@ -12,6 +12,7 @@ export interface StoreState {
   bets: Bet[];
 }
 
+
 ObservableStore.addExtension(new ReduxDevToolsExtension({ reactRouterHistory: history }))
 
 class BetslipStore extends ObservableStore<StoreState> {
