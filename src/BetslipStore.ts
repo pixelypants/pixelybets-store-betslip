@@ -22,12 +22,12 @@ class BetslipStore extends ObservableStore<StoreState> {
         {
           id: 1234,
           name: 'Bet One',
-          amount: 6
+          amount: 6,
         },
         {
           id: 2345,
           name: 'Bet Two',
-          amount: 2
+          amount: 2,
         }
       ],
     };
