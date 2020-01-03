@@ -35,6 +35,10 @@ class BetslipStore extends ObservableStore<StoreState> {
     this.setState(initialState, betslipStoreActions.InitBetsState);
   }
 
+  getBets() {
+    return of(this.getState().bets);
+  }
+
   addBet(bet: Bet) {
     let bets = [...this.getState().bets, bet];
     this.setState({ bets: bets }, betslipStoreActions.AddBet);
@@ -49,6 +53,7 @@ class BetslipStore extends ObservableStore<StoreState> {
 }
 
 export const betslipStoreActions = {
+  GetBets: 'GET_BETS',
   AddBet: 'ADD_BET',
   DeleteBet: 'DELETE_BET',
   InitBetsState: 'INIT_BETS_STATE',
