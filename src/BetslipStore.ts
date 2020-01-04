@@ -12,25 +12,13 @@ export interface StoreState {
   bets: Bet[];
 }
 
-
 ObservableStore.addExtension(new ReduxDevToolsExtension({ reactRouterHistory: history }))
 
 class BetslipStore extends ObservableStore<StoreState> {
   constructor() {
-    super({ trackStateHistory: true, logStateChanges: true });
+    super({ trackStateHistory: true, logStateChanges: true, includeStateChangesOnSubscribe: false });
     const initialState: StoreState = {
-      bets: [
-        {
-          id: 1234,
-          name: 'Bet One',
-          amount: 6,
-        },
-        {
-          id: 2345,
-          name: 'Bet Two',
-          amount: 2,
-        }
-      ],
+      bets: [],
     };
     this.setState(initialState, betslipStoreActions.InitBetsState);
   }
