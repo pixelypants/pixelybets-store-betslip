@@ -28,8 +28,19 @@ class BetslipStore extends ObservableStore<StoreState> {
   }
 
   addBet(bet: Bet) {
-    let bets = [...this.getState().bets, bet];
-    this.setState({ bets: bets }, betslipStoreActions.AddBet);
+    let bets = this.getState().bets;
+    let isInBetSlip = bets.findIndex(b => {
+      return b.id === bet.id
+    })
+    if(isInBetSlip >= 0)
+    {
+      this.deleteBet(bet.id)
+    }
+    else
+    {
+      let addBets = [...bets, bet];
+      this.setState({ bets: addBets }, betslipStoreActions.AddBet);
+    }
   }
 
   deleteBet(id: number) {
